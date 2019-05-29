@@ -7,7 +7,7 @@ resource "aws_instance" "web1" {
   instance_type = "${var.instance_type}"
   key_name = "${var.key_name}"
   security_groups = ["${var.security_groups}"]
-  user_data = ${{file("userdata.sh")}}
+  user_data = "${file("userdata.sh")}"
   tags {
     Name = "Instance1"
   }
