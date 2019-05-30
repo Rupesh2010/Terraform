@@ -11,3 +11,8 @@ data "aws_iam_policy_document" "default" {
     ]
   }
 }
+
+resource "aws_iam_policy" "default" {
+  name   = "ec2_policy"
+  policy = "${data.aws_iam_policy_document.default.json}"
+}
