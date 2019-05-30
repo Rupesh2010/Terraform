@@ -1,16 +1,15 @@
 data "aws_iam_policy_document" "default" {
-  statement {
-  
-    actions = [
-      "s3:ListAllMyBuckets",
-      "s3:GetBucketLocation",
+   statement { 
+    actions = [	   
+      "sts:AssumeRole"	
     ]
-
-    resources = [
-      "arn:aws:s3:::*",
-    ]
-  }
-}
+     
+    principals {	  
+      type = "Service"	 
+      identifiers = [ "ec2.amazonaws.com" ]	 
+   }
+ } 
+}  
 
 resource "aws_iam_role" "default" {
   name   = "ec2_role_s3"
