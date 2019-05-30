@@ -12,7 +12,12 @@ data "aws_iam_policy_document" "default" {
   }
 }
 
-resource "aws_iam_policy" "default" {
-  name   = "ec2_policy"
+resource "aws_iam_role" "default" {
+  name   = "ec2_role_s3"
   policy = "${data.aws_iam_policy_document.default.json}"
+}
+
+resource "aws_iam_instance_profile" "default" {
+  name = "test_profile"
+  role = "${aws_iam_role.default.name}"
 }
