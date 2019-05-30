@@ -17,6 +17,6 @@ resource "aws_iam_role" "default" {
 }
 
 resource "aws_iam_instance_profile" "default" {
-  name = "ec2_role_s3"
+  name = "ec2-role-s3"
   role = "${aws_iam_role.default.name}"
 }
