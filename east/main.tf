@@ -8,7 +8,7 @@ resource "aws_instance" "web1" {
   key_name = "${var.key_name}"
   security_groups = ["${var.security_groups}"]
   user_data = "${file("userdata.sh")}"
-  iam_instance_profile = "${aws_iam_instance_profile.default.arn}"
+  iam_instance_profile = "${aws_iam_instance_profile.default.name}"
   tags {
     Name = "Instance1"
   }
